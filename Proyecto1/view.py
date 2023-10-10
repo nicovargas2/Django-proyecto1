@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from datetime import datetime
+from django.template import Template, Context
 
 
 def saludo(request):
@@ -19,3 +20,18 @@ def miNombreEs(self, nombre):
     </div>"""
     # documentoDeTexto = f"Bienvenido: <br><br> {nombre}"
     return HttpResponse(documentoDeTexto)
+
+
+def probandoTemplateMuyBien(self):
+    miHTML = open(
+        "/Users/nicolasvargas/Desktop/Python/Coderhouse/Clase9/Proyecto1/Proyecto1/templates/Proyecto1/a.html"
+    )
+    plantilla = Template(miHTML.read())
+
+    miHTML.close()
+
+    miContext = Context()
+
+    documento = plantilla.render(miContext)
+
+    return HttpResponse(documento)
